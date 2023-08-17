@@ -157,5 +157,5 @@ fn view(model: &Model) -> Node<Msg> {
 #[wasm_bindgen(start)]
 pub fn start() {
     // Mount the `app` to the element with the `id` "app".
-    App::start("Stack app", init, update, view);
+    App::start("app", init, update, view);
 }
