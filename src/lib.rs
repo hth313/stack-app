@@ -1,6 +1,3 @@
-// (Lines like the one below ignore selected Clippy rules
-//  - it's useful when you want to check your code with `cargo make verify`
-// but some rules are too "annoying" or are not applicable for your case.)
 #![allow(clippy::wildcard_imports)]
 
 use seed::{prelude::*, *};
@@ -45,14 +42,12 @@ struct Stack {
 //    Update
 // ------ ------
 
-// (Remove the line below once any of your `Msg` variants doesn't implement `Copy`.)
-#[derive(Copy, Clone)]
 // `Msg` describes the different events you can modify state with.
 enum Msg {
     Increment,
 }
 
-// `update` describes how to handle each `Msg`.
+// handle each `Msg`.
 fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
     match msg {
         Msg::Increment => model.stack.sp += 1,
@@ -153,9 +148,7 @@ fn view(model: &Model) -> Node<Msg> {
 //     Start
 // ------ ------
 
-// (This function is invoked by `init` function in `index.html`.)
 #[wasm_bindgen(start)]
 pub fn start() {
-    // Mount the `app` to the element with the `id` "app".
     App::start("app", init, update, view);
 }
