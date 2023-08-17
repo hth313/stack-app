@@ -121,16 +121,18 @@ fn view(model: &Model) -> Node<Msg> {
 		At::Height => in_use,
 	    }
 	],
-	rect![
-	    attrs! {
-		At::Fill => past_use_color,
-		At::FillOpacity => 0.15,
-		At::X => x,
-		At::Y => stack_pointer,
+	IF!(not(overflow) => vec![
+	    rect![
+		attrs! {
+		    At::Fill => past_use_color,
+		    At::FillOpacity => 0.15,
+		    At::X => x,
+		    At::Y => stack_pointer,
 		At::Width => STACK_WIDTH,
-		At::Height => past_use,
-	    }
-	],
+		    At::Height => past_use,
+		}
+	    ],
+	]),
 	text![
 	    attrs! {
 		At::X => x + STACK_WIDTH / 2,
